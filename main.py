@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import configparser
+from bot import TelegramBot
 
 def main():
 
@@ -17,6 +18,9 @@ def main():
 
     print("Read all, starting bot.")
     # todo: start bot here.
+
+    bot = TelegramBot(token, url, username, password, remote_file)
+    
 
 
 if __name__ == "__main__":
