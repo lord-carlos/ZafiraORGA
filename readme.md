@@ -1,6 +1,6 @@
 # Zafira Orga telegram bot
 
-Henrik sein bot! Wie geilasdfasdf
+Henrik sein bot!
 
 ## How to use
 Install requierment
