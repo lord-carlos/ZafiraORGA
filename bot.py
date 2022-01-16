@@ -2,7 +2,7 @@ from fileinput import filename
 import telebot
 import csv
 import owncloud
-import datetime
+from datetime import datetime
 
 class TelegramBot():
     def __init__(self, token, url, username, password, remote_file):
@@ -12,7 +12,7 @@ class TelegramBot():
 
         @bot.message_handler(content_types=['text'])
         def message_received(message):
-            print(message)
+            print("Got message from: " + message.from_user.first_name)
             bot.send_message(chat_id=message.from_user.id, text="AyeAye! Ist eingetragen!", reply_to_message_id="Hi")
             #bot.send_message(reply_to_message_id="Hi")
 
@@ -26,7 +26,6 @@ class TelegramBot():
                 writer = csv.writer(Zaf_file)
                 writer.writerow([message.from_user.first_name, message.from_user.username, message.from_user.last_name, day, hour, message.text])
 
-            oc.put_file(filename, remote_file)
-            oc.delete(fileName)
+            oc.put_file(remote_file, fileName)
 
         bot.polling(True)
