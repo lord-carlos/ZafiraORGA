@@ -13,7 +13,6 @@ class TelegramBot():
         @bot.message_handler(content_types=['text'])
         def message_received(message):
             print("Got message from: " + message.from_user.first_name)
-            bot.send_message(chat_id=message.from_user.id, text="AyeAye! Ist eingetragen!", reply_to_message_id="Hi")
             #bot.send_message(reply_to_message_id="Hi")
 
             oc = owncloud.Client(url)
@@ -27,5 +26,6 @@ class TelegramBot():
                 writer.writerow([message.from_user.first_name, message.from_user.username, message.from_user.last_name, day, hour, message.text])
 
             oc.put_file(remote_file, fileName)
+            bot.send_message(chat_id=message.from_user.id, text="AyeAye! Ist eingetragen!", reply_to_message_id="Hi")
 
         bot.polling(True)
